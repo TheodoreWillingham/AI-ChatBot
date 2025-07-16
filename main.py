@@ -22,7 +22,7 @@ def main():
             break
         
         print("\nTimmy: ", end="") #this get's rid of the /n which is at the end of a python print by default
-        
+         
         #How we call the Agent
         for chunk in agent_executor.stream( #we can stream our LLM's response from the agent_executor
             {"messages": [HumanMessage(content=user_input)]} # we give our agent input (messages: which is our userinput) HumanMessage rather than system Message
