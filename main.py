@@ -6,10 +6,23 @@ from dotenv import load_dotenv
 
 load_dotenv() # loads variable from env file
 
+#create tools which can be used by the AI model
+#we do this using a decorator
+
+
+#for the parameters make sure to define a type for them( do this using colon)
+
+@tool
+def calculator(a: float, b: float) -> str:
+    """Useful for performing basic arithmetic calculations with numbers"""
+    print("Tool has been called.")
+    return f"The sum of {a} and {b} is {a + b}"
+    
+
 def main():
     model = ChatOpenAI(temperature=0) # tempature sets the randomness of the model
     
-    tools = [] # fill with tools our agent can use
+    tools = [calculator] # fill with tools our agent can use
     agent_executor = create_react_agent(model, tools)
 
     print("Welcome! I'm an AI assistant named Timmy created by Theo. Type 'sybau' to exit.")
