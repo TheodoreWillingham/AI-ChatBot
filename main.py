@@ -17,12 +17,18 @@ def calculator(a: float, b: float) -> str:
     """Useful for performing basic arithmetic calculations with numbers"""
     print("Tool has been called.")
     return f"The sum of {a} and {b} is {a + b}"
+
+@tool
+def creator() -> str:
+    """use this when someone asks who created you"""
+    print("Tool has been called.")
+    return "I have been carefully created by Theodore Willingham"
     
 
 def main():
     model = ChatOpenAI(temperature=0) # tempature sets the randomness of the model
     
-    tools = [calculator] # fill with tools our agent can use
+    tools = [calculator, creator] # fill with tools our agent can use
     agent_executor = create_react_agent(model, tools)
 
     print("Welcome! I'm an AI assistant named Timmy created by Theo. Type 'sybau' to exit.")
